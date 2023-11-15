@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,20 +20,20 @@ public class AirtelKycContoller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${oauth.client.id}")
+    @Value("${client.id}")
     private String clientId;
 
-    @Value("${oauth.client.secret}")
+    @Value("${client.secret}")
     private String clientSecret;
 
     @GetMapping("/kyc")
-    public ResponseEntity<String> userEnquiry(@RequestParam String msisdn) {
+    public ResponseEntity<String> userEnquiry(@RequestParam(name = "msisdn") String msisdn) {
         Gson gson = new Gson();
         // Obtain OAuth token
         String token = getOAuthToken(clientId, clientSecret);
 
         // Use the token to call another API
-        String apiUrl = "https://openapi.airtel.africa/standard/v1/users/";
+        String apiUrl = "https://openapiuat.airtel.africa/standard/v1/users/";
         apiUrl = apiUrl + msisdn;
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + token);
@@ -60,7 +59,7 @@ public class AirtelKycContoller {
 
     private String getOAuthToken(String clientId, String clientSecret) {
         // Call OAuth service to obtain a token
-        String oauthApiUrl = " https://openapi.airtel.africa/auth/oauth2/token";
+        String oauthApiUrl = "https://openapiuat.airtel.africa/auth/oauth2/token";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

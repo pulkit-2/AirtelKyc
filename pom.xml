@@ -22,24 +22,6 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Spring Boot Security Starter -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<!-- Spring Boot OAuth2 Client Starter -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-client</artifactId>
-		</dependency>
-
-		<!-- Spring Boot OAuth2 Resource Server Starter -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-		</dependency>
-
 		<!-- Spring Boot Test Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
